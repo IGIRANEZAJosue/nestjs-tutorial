@@ -7,7 +7,7 @@ export class NinjasController {
     return [];
   }
 
-  @Get(':id')
+  @Get('/:id')
   getOneNinja(@Param('id') id: string) {
     return { id };
   }
@@ -17,13 +17,13 @@ export class NinjasController {
     return {};
   }
 
-  @Delete(':id')
-  deleteNinja() {
-    return {};
+  @Delete('/:id')
+  deleteNinja(@Param('id') id: string) {
+    return { id };
   }
 
-  @Put(':id')
-  updateNinja() {
-    return {};
+  @Put('/:id')
+  updateNinja(@Param('id') id: string) {
+    return { id };
   }
 }
