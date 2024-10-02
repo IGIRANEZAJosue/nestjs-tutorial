@@ -9,6 +9,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { CreateNinjaDto } from './create-ninja.dto';
+import { UpdateNinjaDto } from './update-ninja.dto';
 @Controller('ninjas')
 export class NinjasController {
   @Get()
@@ -32,7 +33,7 @@ export class NinjasController {
   }
 
   @Put('/:id')
-  updateNinja(@Param('id') id: string) {
-    return { id };
+  updateNinja(@Param('id') id: string, @Body() updateNinjaDto: UpdateNinjaDto) {
+    return { id, name: updateNinjaDto };
   }
 }
