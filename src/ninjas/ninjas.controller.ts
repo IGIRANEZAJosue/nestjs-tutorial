@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Delete,
   Get,
@@ -7,6 +8,7 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
+import { CreateNinjaDto } from './create-ninja.dto';
 @Controller('ninjas')
 export class NinjasController {
   @Get()
@@ -20,8 +22,8 @@ export class NinjasController {
   }
 
   @Post()
-  addNinja() {
-    return {};
+  addNinja(@Body() createNinjaDto: CreateNinjaDto) {
+    return { name: createNinjaDto.name };
   }
 
   @Delete('/:id')
