@@ -1,3 +1,4 @@
+import { CreateNinjaDto } from './create-ninja.dto';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
@@ -20,5 +21,16 @@ export class NinjasService {
     if (!ninja) throw new Error('NInja not found');
 
     return ninja;
+  }
+
+  createNinja(createNinjaDto: CreateNinjaDto) {
+    const newNinja = {
+      id: Date.now(),
+      name: createNinjaDto.name,
+      weapon: createNinjaDto.weapon,
+    };
+    this.ninjas.push(newNinja);
+
+    return newNinja;
   }
 }

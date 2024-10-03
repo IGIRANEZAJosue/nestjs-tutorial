@@ -29,7 +29,7 @@ export class NinjasController {
 
   @Post()
   addNinja(@Body() createNinjaDto: CreateNinjaDto) {
-    return { name: createNinjaDto.name };
+    return this.ninjaService.createNinja(createNinjaDto);
   }
 
   @Delete('/:id')
