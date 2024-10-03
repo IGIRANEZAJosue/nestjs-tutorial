@@ -1,3 +1,4 @@
+import { UpdateNinjaDto } from './update-ninja.dto';
 import { CreateNinjaDto } from './create-ninja.dto';
 import { Injectable } from '@nestjs/common';
 
@@ -39,5 +40,11 @@ export class NinjasService {
     this.ninjas = this.ninjas.filter((ninja) => ninja.id !== id);
 
     return deletedNinja;
+  }
+
+  updateNinja(id: number, updateNinjaDto: UpdateNinjaDto) {
+    this.ninjas = this.ninjas.map((ninja) =>
+      ninja.id === id ? { ...ninja, ...updateNinjaDto } : ninja,
+    );
   }
 }

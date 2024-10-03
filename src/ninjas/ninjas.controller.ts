@@ -39,6 +39,6 @@ export class NinjasController {
 
   @Put('/:id')
   updateNinja(@Param('id') id: string, @Body() updateNinjaDto: UpdateNinjaDto) {
-    return { id, name: updateNinjaDto };
+    return this.ninjaService.updateNinja(+id, updateNinjaDto);
   }
 }
