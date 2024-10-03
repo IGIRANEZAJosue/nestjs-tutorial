@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class NinjasService {
-  private readonly ninjas = [
+  private ninjas = [
     { id: 0, name: 'NinjaA', weapon: 'stars' },
     { id: 1, name: 'NinjaB', weapon: 'nunchucks' },
   ];
@@ -32,5 +32,12 @@ export class NinjasService {
     this.ninjas.push(newNinja);
 
     return newNinja;
+  }
+
+  deleteNinja(id: number) {
+    const deletedNinja = this.getNinja(id);
+    this.ninjas = this.ninjas.filter((ninja) => ninja.id !== id);
+
+    return deletedNinja;
   }
 }

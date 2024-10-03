@@ -34,7 +34,7 @@ export class NinjasController {
 
   @Delete('/:id')
   deleteNinja(@Param('id') id: string) {
-    return { id };
+    return this.ninjaService.deleteNinja(+id);
   }
 
   @Put('/:id')
