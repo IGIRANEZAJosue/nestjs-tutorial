@@ -3,7 +3,9 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   Query,
@@ -23,8 +25,8 @@ export class NinjasController {
   }
 
   @Get('/:id')
-  getOneNinja(@Param('id') id: string) {
-    return this.ninjaService.getNinja(+id); // or you can use Number(id)
+  getOneNinja(@Param('id', ParseIntPipe) id: number) {
+    return this.ninjaService.getNinja(id); // or you can use Number(id)
   }
 
   @Post()
