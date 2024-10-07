@@ -8,6 +8,7 @@ import {
   Post,
   Put,
   Query,
+  ValidationPipe,
 } from '@nestjs/common';
 import { CreateNinjaDto } from './create-ninja.dto';
 import { UpdateNinjaDto } from './update-ninja.dto';
@@ -29,7 +30,7 @@ export class NinjasController {
   }
 
   @Post()
-  addNinja(@Body() createNinjaDto: CreateNinjaDto) {
+  addNinja(@Body(new ValidationPipe()) createNinjaDto: CreateNinjaDto) {
     return this.ninjaService.createNinja(createNinjaDto);
   }
 
